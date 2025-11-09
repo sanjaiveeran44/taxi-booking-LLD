@@ -5,18 +5,26 @@ public class Taxi{
     private int taxiId;
     private char currentLocation;
     private int earning;
-    private boolean isAvailable;
     private int freeTime;
     private List<Booking> booking;
 
-    public Taxi(int taxiId, char currentLocation, int earning, boolean isAvailable, int freeTime, List<Booking> booking){
+    public Taxi(int taxiId){
         this.taxiId = taxiId;
-        this.currentLocation = currentLocation;
-        this.earning = earnin;
-        this.isAvailable = isAvailable;
-        this.freeTime = freeTime;
-        this.booking = booking;
+        this.currentLocation = 'A';
+        this.earning = 0;
+        this.freeTime = 0;
+        this.booking = new ArrayList<>();
     }
+
+    public boolean isAvailableNow(char pickupPoint, char pickupTime){
+        int timeDiff = Math.abs(pickupPoint - currentLocation);
+        return freeTime + timeDiff <= pickupTime;
+    }
+
+    public assignBooking(Booking booking){
+        this.booking.add(booking);
+    }
+        
 
     public int getTaxiId(){
         return taxiId;
@@ -26,9 +34,6 @@ public class Taxi{
     }
     public int getEarning(){
         return earning;
-    }
-    public boolean getIsAvailable(){
-        return isAvailable;
     }
     public int getFreeTime(){
         return freeTime;
@@ -42,9 +47,6 @@ public class Taxi{
     }
     public void setEarning(int earning){
         this.earning = earning;
-    }
-    public void setIsAvailable(boolean isAvailable){
-        this.isAvailable = isAvailable;
     }
     public void setFreeTime(int setFreeTime){
         this.freeTime = freeTime;
